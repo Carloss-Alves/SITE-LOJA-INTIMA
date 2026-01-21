@@ -3,35 +3,22 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-// Configuração do Vite
-// Documentação: https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  // Configurações do servidor local
+export default defineConfig(({ mode }: { mode: string }) => ({
   server: {
-    // Permite acesso via rede local
-    host: "::",
-
-    // Porta onde o projeto será executado
+    host: true, 
     port: 8080,
-
-    // Configuração do Hot Module Replacement (HMR)
+    // ESSA É A LINHA QUE VOCÊ PRECISA ADICIONAR:
+    allowedHosts: "all", 
     hmr: {
-      // Desativa o overlay de erros na tela
       overlay: false,
     },
   },
-
-  // Plugins utilizados no projeto
   plugins: [
-    react(),
-    // Plugin usado apenas em modo desenvolvimento
-    mode === "development" && componentTagger(),
+    react(), 
+    mode === "development" && componentTagger()
   ].filter(Boolean),
-
-  // Configuração de atalhos de importação
   resolve: {
     alias: {
-      // Atalho para a pasta src
       "@": path.resolve(__dirname, "./src"),
     },
   },
