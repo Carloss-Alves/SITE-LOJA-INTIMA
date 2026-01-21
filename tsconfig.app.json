@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    // Tipos globais para testes com Vitest
+    "types": ["vitest/globals"],
+
+    // Versão do JavaScript gerado
+    "target": "ES2020",
+
+    // Usa defineProperty para campos de classe
+    "useDefineForClassFields": true,
+
+    // Bibliotecas disponíveis no projeto
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Modo Bundler */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    // Configuração de JSX para React
+    "jsx": "react-jsx",
+
+    /* Regras de lint */
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitAny": false,
+    "noFallthroughCasesInSwitch": false,
+
+    // Diretório base para imports
+    "baseUrl": ".",
+
+    // Atalhos de importação
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+
+  // Pasta incluída nessa configuração
+  "include": ["src"]
+}

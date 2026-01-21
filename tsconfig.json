@@ -1,0 +1,27 @@
+{
+  "files": [],
+
+  // Referências para outros arquivos de configuração do TypeScript
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+
+  "compilerOptions": {
+    // Diretório base para resolução de caminhos
+    "baseUrl": ".",
+
+    // Atalhos de importação
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    // Regras do compilador
+    "noImplicitAny": false,
+    "noUnusedParameters": false,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "noUnusedLocals": false,
+    "strictNullChecks": false
+  }
+}

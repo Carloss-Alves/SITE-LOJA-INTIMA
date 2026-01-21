@@ -1,0 +1,267 @@
+@import '@fontsource/playfair-display/400.css';
+@import '@fontsource/playfair-display/500.css';
+@import '@fontsource/playfair-display/600.css';
+@import '@fontsource/playfair-display/700.css';
+@import '@fontsource/inter/300.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Clean white boutique palette */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Elegant gray primary for buttons */
+    --primary: 0 0% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Soft gray secondary */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 20%;
+
+    /* Muted tones */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Accent - subtle warm */
+    --accent: 0 0% 93%;
+    --accent-foreground: 0 0% 10%;
+
+    /* Dark for highlights */
+    --dark: 0 0% 10%;
+    --dark-foreground: 0 0% 100%;
+
+    /* WhatsApp green */
+    --whatsapp: 142 70% 45%;
+    --whatsapp-foreground: 0 0% 100%;
+
+    /* Price colors */
+    --price: 0 0% 10%;
+    --price-old: 0 0% 60%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 40%;
+
+    --radius: 0.25rem;
+
+    /* Fonts */
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+
+    /* Shadows */
+    --shadow-soft: 0 2px 8px -2px hsl(0 0% 0% / 0.08);
+    --shadow-card: 0 4px 12px -4px hsl(0 0% 0% / 0.1);
+    --shadow-hover: 0 8px 24px -8px hsl(0 0% 0% / 0.15);
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 400ms ease;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 0% 85%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 95%;
+    --dark: 0 0% 95%;
+    --dark-foreground: 0 0% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 70%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+  }
+}
+
+@layer components {
+  /* Product card styles */
+  .product-card {
+    @apply bg-card rounded-sm overflow-hidden transition-all duration-300;
+  }
+
+  .product-card:hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  .product-card:hover .product-image {
+    transform: scale(1.03);
+  }
+
+  .product-image {
+    @apply w-full aspect-[3/4] object-cover transition-transform duration-500;
+  }
+
+  /* Button variants */
+  .btn-details {
+    @apply w-full py-3 px-4 bg-primary text-primary-foreground font-medium text-sm uppercase tracking-wider transition-all duration-200 hover:bg-dark;
+  }
+
+  .btn-buy {
+    @apply py-4 px-8 bg-primary text-primary-foreground font-medium text-sm uppercase tracking-wider transition-all duration-200 hover:bg-dark;
+  }
+
+  /* Size selector */
+  .size-btn {
+    @apply w-12 h-12 border border-border flex items-center justify-center text-sm font-medium transition-all duration-200 hover:border-dark;
+  }
+
+  .size-btn.selected {
+    @apply bg-dark text-dark-foreground border-dark;
+  }
+
+  /* Color selector */
+  .color-btn {
+    @apply px-4 py-2 border border-border text-sm transition-all duration-200 hover:border-dark;
+  }
+
+  .color-btn.selected {
+    @apply bg-dark text-dark-foreground border-dark;
+  }
+
+  /* Navigation link */
+  .nav-link {
+    @apply text-sm font-medium uppercase tracking-wider text-foreground/80 hover:text-foreground transition-colors duration-200;
+  }
+
+  .nav-link.active {
+    @apply text-foreground;
+  }
+
+  /* Filter checkbox */
+  .filter-checkbox {
+    @apply flex items-center gap-3 py-2 cursor-pointer text-sm text-muted-foreground hover:text-foreground transition-colors;
+  }
+
+  .filter-checkbox.checked {
+    @apply text-foreground font-medium;
+  }
+
+  /* Price display */
+  .price {
+    @apply font-semibold text-price;
+  }
+
+  .price-old {
+    @apply text-price-old line-through text-sm;
+  }
+
+  /* WhatsApp button */
+  .whatsapp-float {
+    @apply fixed bottom-6 right-6 w-14 h-14 bg-whatsapp text-whatsapp-foreground rounded-full flex items-center justify-center shadow-lg z-50 transition-transform duration-200 hover:scale-110;
+  }
+
+  /* Benefits bar */
+  .benefit-item {
+    @apply flex flex-col items-center text-center gap-2 py-6;
+  }
+
+  .benefit-icon {
+    @apply w-12 h-12 text-muted-foreground;
+  }
+
+  .benefit-title {
+    @apply font-medium text-foreground;
+  }
+
+  .benefit-desc {
+    @apply text-sm text-muted-foreground;
+  }
+
+  /* Quantity selector */
+  .qty-btn {
+    @apply w-10 h-10 flex items-center justify-center border border-border hover:bg-accent transition-colors;
+  }
+
+  .qty-input {
+    @apply w-12 h-10 text-center border-y border-border bg-transparent;
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn var(--transition-base) ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
